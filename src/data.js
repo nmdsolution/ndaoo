@@ -4,68 +4,206 @@ import ind3 from './assets/industries-img-3.webp';
 import ind4 from './assets/industries-img-4.webp';
 import ind5 from './assets/industries-img-5.webp';
 
-export const megaMenu = {
-  'Nos services': [
-    { title: 'Développement IA', items: ['Conseil en IA', 'Agents IA', 'IA générative', 'Vision par ordinateur', 'RAG'] },
-    { title: 'Ingénierie logicielle', items: ['Développement sur mesure', 'Applications mobiles', 'UI/UX', 'Modernisation applicative', 'Automatisation QA'] },
-    { title: 'Cloud & DevOps', items: ['Migration cloud', 'DevOps', 'Gestion d’infrastructure', 'Applications cloud'] },
-    { title: 'Data & Analytics', items: ['Data engineering', 'Data warehouse', 'Power BI', 'Gouvernance des données'] },
-    { title: 'Sécurité & Qualité', items: ['DevSecOps', 'Tests d’intrusion', 'Continuité d’activité'] },
+export const industryImages = [ind1, ind2, ind3, ind4, ind5];
+
+const fr = {
+  megaMenu: {
+    'Nos services': [
+      { title: 'Développement IA', items: ['Conseil en IA', 'Agents IA', 'IA générative', 'Vision par ordinateur', 'RAG'] },
+      { title: 'Ingénierie logicielle', items: ['Développement sur mesure', 'Applications mobiles', 'UI/UX', 'Modernisation applicative', 'Automatisation QA'] },
+      { title: 'Cloud & DevOps', items: ['Migration cloud', 'DevOps', 'Gestion d’infrastructure', 'Applications cloud'] },
+      { title: 'Data & Analytics', items: ['Data engineering', 'Data warehouse', 'Power BI', 'Gouvernance des données'] },
+      { title: 'Sécurité & Qualité', items: ['DevSecOps', 'Tests d’intrusion', 'Continuité d’activité'] },
+    ],
+    Secteurs: [
+      { title: 'Secteurs que nous servons', items: ['Finance', 'Retail & e-commerce', 'Santé', 'Logistique', 'Agritech', 'Télécoms'] },
+    ],
+    'À propos': [
+      { title: 'Pourquoi NDAOO', items: ['Présentation', 'Équipe', 'Partenaires', 'Carrières', 'Actualités'] },
+    ],
+    Ressources: [
+      { title: 'Insights', items: ['Blog d’experts', 'Livres blancs', 'Webinaires', 'Études de cas'] },
+    ],
+  },
+  phases: [
+    { n: '01', title: 'Audit', time: '2 semaines', text: 'Nos ingénieurs travaillent avec votre équipe, documentent vos besoins et chiffrent chaque opportunité. Si le rapport ne justifie pas la suite, vous vous arrêtez ici.' },
+    { n: '02', title: 'Pilote', time: '4 à 6 semaines', text: 'Un premier périmètre est livré sur votre contexte réel, avec des indicateurs convenus dès le départ. À la fin, les chiffres ont bougé ou non.' },
+    { n: '03', title: 'Déploiement', time: 'Selon périmètre', text: 'Ce qui a fonctionné est industrialisé et standardisé dans toute votre organisation, avec des gains visibles dans vos indicateurs.' },
+    { n: '04', title: 'Excellence', time: 'En continu', text: 'Automatisation avancée, agents IA et amélioration continue pour les équipes prêtes à aller plus loin.' },
   ],
-  Secteurs: [
-    { title: 'Secteurs que nous servons', items: ['Finance', 'Retail & e-commerce', 'Santé', 'Logistique', 'Agritech', 'Télécoms'] },
+  testimonials: [
+    { quote: 'NDAOO nous a livré une plateforme fiable en quelques semaines. L’équipe comprend le métier autant que la technique.', name: 'Directeur technique', company: 'Client – Fintech' },
+    { quote: 'Un partenaire réactif qui a su moderniser notre application historique sans interrompre nos opérations.', name: 'Directrice des opérations', company: 'Client – Logistique' },
+    { quote: 'Grâce à leur approche par phases, nous avons validé la valeur avant d’investir davantage. Très rassurant.', name: 'CEO', company: 'Client – Retail' },
   ],
-  'À propos': [
-    { title: 'Pourquoi NDAOO', items: ['Présentation', 'Équipe', 'Partenaires', 'Carrières', 'Actualités'] },
+  caseStudies: [
+    'Une fintech. Application mobile livrée en 10 semaines. 60 000 utilisateurs le premier mois.',
+    'Un opérateur logistique. Suivi de flotte en temps réel. Retards de livraison réduits de 35 %.',
+    'Une plateforme e-commerce. Migration cloud sans interruption. Coûts d’hébergement −40 %.',
   ],
-  Ressources: [
-    { title: 'Insights', items: ['Blog d’experts', 'Livres blancs', 'Webinaires', 'Études de cas'] },
+  partners: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Snowflake', 'Databricks', 'Stripe'],
+  services: [
+    { title: 'Développement augmenté par l’IA', text: 'IA pour la génération de code, les tests et le DevOps, mesurée sur votre référence de livraison.' },
+    { title: 'Conseil & mise en œuvre IA', text: 'Stratégie, MLOps et IA générative : du cadrage à la mise en production.' },
+    { title: 'Agents IA', text: 'Agents sur mesure pour automatiser vos processus, avec une seule équipe de bout en bout.' },
+    { title: 'Ingénierie logicielle', text: 'Applications web et mobiles, modernisation et ingénierie produit. Les mêmes ingénieurs du début à la fin.' },
+    { title: 'Cloud & infrastructure', text: 'Migration, DevOps et gestion d’infrastructure sur AWS, Azure et Google Cloud.' },
+    { title: 'Data & Analytics', text: 'Plateformes data, entrepôts de données et BI pour décider sur des chiffres fiables.' },
   ],
+  industries: [
+    { name: 'Retail / E-commerce', value: '100K+', text: 'utilisateurs servis chaque jour via nos systèmes e-commerce.' },
+    { name: 'Finance', value: '2 M€', text: 'de transactions traitées chaque mois pour une fintech.' },
+    { name: 'Santé', value: '30+', text: 'cliniques connectées à une plateforme de gestion unique.' },
+    { name: 'Logistique', value: '−35 %', text: 'de retards de livraison grâce au suivi en temps réel.' },
+    { name: 'Agriculture', value: '10 000', text: 'hectares suivis via une plateforme d’agriculture de précision.' },
+  ],
+  insights: [
+    { title: 'Facturation par IA : le guide pour les équipes finance', tag: 'IA', date: '22 octobre 2026', type: 'Blog d’expert' },
+    { title: 'Migration cloud : éviter les 5 erreurs les plus coûteuses', tag: 'Cloud', date: '16 octobre 2026', type: 'Livre blanc' },
+    { title: 'Agents IA pour l’automatisation en entreprise', tag: 'IA', date: '12 octobre 2026', type: 'Webinaire' },
+    { title: 'Une couche analytique gouvernée pour un BI cohérent', tag: 'Data', date: '09 octobre 2026', type: 'Livre blanc' },
+  ],
+  topics: ['IA', 'Data', 'Cloud', 'Cybersécurité', 'Mobile', 'DevOps', 'UI/UX', 'Outsourcing'],
+  ui: {
+    pageTitle: 'NDAOO – Services technologiques & développement logiciel',
+    pageDescription: 'NDAOO conçoit des logiciels, applications mobiles, solutions cloud, data et IA pour les entreprises.',
+    home: 'NDAOO accueil',
+    mainNav: 'Navigation principale',
+    menu: 'Menu',
+    contactUs: 'Contactez-nous',
+    language: 'Langue',
+    openAllDay: '24/24 ouvert',
+    heroEyebrow: 'NDAOO · Services technologiques',
+    heroTitle: 'Une ingénierie logicielle pragmatique, portée par l’IA',
+    heroLead: 'NDAOO aide les entreprises à transformer leurs investissements technologiques en résultats mesurables : logiciels sur mesure, cloud, data, sécurité et intelligence artificielle.',
+    heroCta: 'Évaluez votre projet',
+    heroCta2: 'Découvrir nos services',
+    problemTitle: 'L’adoption des outils IA progresse. Les résultats de livraison, beaucoup moins.',
+    forCtos: 'Pour les CTO',
+    ctoCard: 'Les ingénieurs sont plus rapides. Les sprints ne le sont pas.',
+    forCios: 'Pour les DSI',
+    cioCard: 'Les outils IA sont en place mais déconnectés du cloud, des données et de la sécurité.',
+    problemLead: 'L’approche NDAOO est mesurée sur votre code réel, connectée à votre infrastructure réelle, avant tout déploiement à grande échelle.',
+    phasesTitle: 'Quatre phases. Une sortie possible à chaque étape. Aucun engagement long terme.',
+    caseStudy: 'Étude de cas',
+    previous: 'Précédent',
+    next: 'Suivant',
+    partnersTitle: 'Des technologies et plateformes que vos équipes utilisent déjà',
+    partnersLead: 'NDAOO maîtrise les principaux écosystèmes cloud et data du marché.',
+    servicesTitle: 'Ce que nous faisons',
+    allServices: 'Tous nos services',
+    industriesTitle: 'Résultats clients par secteur',
+    insightsTitle: 'Insights',
+    contactTitle: 'Parlons de votre projet',
+    contactLead: 'Décrivez votre besoin, nous revenons vers vous sous 48 h.',
+    thanks: (name) => `Merci ${name} ! Nous vous répondrons très vite.`,
+    name: 'Nom',
+    email: 'E-mail',
+    message: 'Message',
+    send: 'Envoyer',
+    footerTagline: 'Services technologiques : logiciel, cloud, data et IA.',
+    rights: 'Tous droits réservés.',
+  },
 };
 
-export const phases = [
-  { n: '01', title: 'Audit', time: '2 semaines', text: 'Nos ingénieurs travaillent avec votre équipe, documentent vos besoins et chiffrent chaque opportunité. Si le rapport ne justifie pas la suite, vous vous arrêtez ici.' },
-  { n: '02', title: 'Pilote', time: '4 à 6 semaines', text: 'Un premier périmètre est livré sur votre contexte réel, avec des indicateurs convenus dès le départ. À la fin, les chiffres ont bougé ou non.' },
-  { n: '03', title: 'Déploiement', time: 'Selon périmètre', text: 'Ce qui a fonctionné est industrialisé et standardisé dans toute votre organisation, avec des gains visibles dans vos indicateurs.' },
-  { n: '04', title: 'Excellence', time: 'En continu', text: 'Automatisation avancée, agents IA et amélioration continue pour les équipes prêtes à aller plus loin.' },
-];
+const en = {
+  megaMenu: {
+    'Our services': [
+      { title: 'AI Development', items: ['AI consulting', 'AI agents', 'Generative AI', 'Computer vision', 'RAG'] },
+      { title: 'Software Engineering', items: ['Custom development', 'Mobile apps', 'UI/UX', 'Application modernization', 'QA automation'] },
+      { title: 'Cloud & DevOps', items: ['Cloud migration', 'DevOps', 'Infrastructure management', 'Cloud applications'] },
+      { title: 'Data & Analytics', items: ['Data engineering', 'Data warehouse', 'Power BI', 'Data governance'] },
+      { title: 'Security & Quality', items: ['DevSecOps', 'Penetration testing', 'Business continuity'] },
+    ],
+    Industries: [
+      { title: 'Industries we serve', items: ['Finance', 'Retail & e-commerce', 'Healthcare', 'Logistics', 'Agritech', 'Telecoms'] },
+    ],
+    'About us': [
+      { title: 'Why NDAOO', items: ['Overview', 'Team', 'Partners', 'Careers', 'News'] },
+    ],
+    Resources: [
+      { title: 'Insights', items: ['Expert blog', 'White papers', 'Webinars', 'Case studies'] },
+    ],
+  },
+  phases: [
+    { n: '01', title: 'Audit', time: '2 weeks', text: 'Our engineers work with your team, document your needs and put a number on every opportunity. If the report doesn’t justify going further, you stop here.' },
+    { n: '02', title: 'Pilot', time: '4 to 6 weeks', text: 'A first scope is delivered in your real context, with metrics agreed up front. At the end, the numbers have moved or they haven’t.' },
+    { n: '03', title: 'Rollout', time: 'Depends on scope', text: 'What worked is industrialized and standardized across your organization, with gains visible in your metrics.' },
+    { n: '04', title: 'Excellence', time: 'Ongoing', text: 'Advanced automation, AI agents and continuous improvement for teams ready to go further.' },
+  ],
+  testimonials: [
+    { quote: 'NDAOO delivered a reliable platform in a few weeks. The team understands the business as much as the technology.', name: 'Chief Technology Officer', company: 'Client – Fintech' },
+    { quote: 'A responsive partner who modernized our legacy application without interrupting our operations.', name: 'Chief Operating Officer', company: 'Client – Logistics' },
+    { quote: 'Thanks to their phased approach, we validated the value before investing further. Very reassuring.', name: 'CEO', company: 'Client – Retail' },
+  ],
+  caseStudies: [
+    'A fintech. Mobile app delivered in 10 weeks. 60,000 users in the first month.',
+    'A logistics operator. Real-time fleet tracking. Delivery delays reduced by 35%.',
+    'An e-commerce platform. Zero-downtime cloud migration. Hosting costs −40%.',
+  ],
+  partners: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Snowflake', 'Databricks', 'Stripe'],
+  services: [
+    { title: 'AI-augmented development', text: 'AI for code generation, testing and DevOps, measured against your delivery baseline.' },
+    { title: 'AI consulting & implementation', text: 'Strategy, MLOps and generative AI: from scoping to production.' },
+    { title: 'AI agents', text: 'Custom agents to automate your processes, with a single end-to-end team.' },
+    { title: 'Software engineering', text: 'Web and mobile apps, modernization and product engineering. The same engineers from start to finish.' },
+    { title: 'Cloud & infrastructure', text: 'Migration, DevOps and infrastructure management on AWS, Azure and Google Cloud.' },
+    { title: 'Data & Analytics', text: 'Data platforms, data warehouses and BI to decide on numbers you can trust.' },
+  ],
+  industries: [
+    { name: 'Retail / E-commerce', value: '100K+', text: 'users served every day through our e-commerce systems.' },
+    { name: 'Finance', value: '€2M', text: 'in transactions processed each month for a fintech.' },
+    { name: 'Healthcare', value: '30+', text: 'clinics connected to a single management platform.' },
+    { name: 'Logistics', value: '−35%', text: 'fewer delivery delays thanks to real-time tracking.' },
+    { name: 'Agriculture', value: '10,000', text: 'hectares monitored through a precision agriculture platform.' },
+  ],
+  insights: [
+    { title: 'AI invoicing: the guide for finance teams', tag: 'AI', date: 'October 22, 2026', type: 'Expert blog' },
+    { title: 'Cloud migration: avoiding the 5 costliest mistakes', tag: 'Cloud', date: 'October 16, 2026', type: 'White paper' },
+    { title: 'AI agents for enterprise automation', tag: 'AI', date: 'October 12, 2026', type: 'Webinar' },
+    { title: 'A governed analytics layer for consistent BI', tag: 'Data', date: 'October 9, 2026', type: 'White paper' },
+  ],
+  topics: ['AI', 'Data', 'Cloud', 'Cybersecurity', 'Mobile', 'DevOps', 'UI/UX', 'Outsourcing'],
+  ui: {
+    pageTitle: 'NDAOO – Technology services & software development',
+    pageDescription: 'NDAOO builds software, mobile apps, cloud, data and AI solutions for businesses.',
+    home: 'NDAOO home',
+    mainNav: 'Main navigation',
+    menu: 'Menu',
+    contactUs: 'Contact us',
+    language: 'Language',
+    openAllDay: 'Open 24/7',
+    heroEyebrow: 'NDAOO · Technology services',
+    heroTitle: 'Pragmatic software engineering, powered by AI',
+    heroLead: 'NDAOO helps companies turn their technology investments into measurable results: custom software, cloud, data, security and artificial intelligence.',
+    heroCta: 'Assess your project',
+    heroCta2: 'Discover our services',
+    problemTitle: 'AI tool adoption is rising. Delivery results, much less so.',
+    forCtos: 'For CTOs',
+    ctoCard: 'Engineers are faster. Sprints are not.',
+    forCios: 'For CIOs',
+    cioCard: 'AI tools are in place but disconnected from the cloud, data and security.',
+    problemLead: 'NDAOO’s approach is measured on your real code, connected to your real infrastructure, before any large-scale rollout.',
+    phasesTitle: 'Four phases. An exit at every step. No long-term commitment.',
+    caseStudy: 'Case study',
+    previous: 'Previous',
+    next: 'Next',
+    partnersTitle: 'Technologies and platforms your teams already use',
+    partnersLead: 'NDAOO masters the market’s main cloud and data ecosystems.',
+    servicesTitle: 'What we do',
+    allServices: 'All our services',
+    industriesTitle: 'Client results by industry',
+    insightsTitle: 'Insights',
+    contactTitle: 'Let’s talk about your project',
+    contactLead: 'Describe your need and we’ll get back to you within 48 hours.',
+    thanks: (name) => `Thank you ${name}! We’ll get back to you very soon.`,
+    name: 'Name',
+    email: 'Email',
+    message: 'Message',
+    send: 'Send',
+    footerTagline: 'Technology services: software, cloud, data and AI.',
+    rights: 'All rights reserved.',
+  },
+};
 
-export const testimonials = [
-  { quote: 'NDAOO nous a livré une plateforme fiable en quelques semaines. L’équipe comprend le métier autant que la technique.', name: 'Directeur technique', company: 'Client – Fintech' },
-  { quote: 'Un partenaire réactif qui a su moderniser notre application historique sans interrompre nos opérations.', name: 'Directrice des opérations', company: 'Client – Logistique' },
-  { quote: 'Grâce à leur approche par phases, nous avons validé la valeur avant d’investir davantage. Très rassurant.', name: 'CEO', company: 'Client – Retail' },
-];
-
-export const caseStudies = [
-  'Une fintech. Application mobile livrée en 10 semaines. 60 000 utilisateurs le premier mois.',
-  'Un opérateur logistique. Suivi de flotte en temps réel. Retards de livraison réduits de 35 %.',
-  'Une plateforme e-commerce. Migration cloud sans interruption. Coûts d’hébergement −40 %.',
-];
-
-export const partners = ['AWS', 'Microsoft Azure', 'Google Cloud', 'Snowflake', 'Databricks', 'Stripe'];
-
-export const services = [
-  { title: 'Développement augmenté par l’IA', text: 'IA pour la génération de code, les tests et le DevOps, mesurée sur votre référence de livraison.' },
-  { title: 'Conseil & mise en œuvre IA', text: 'Stratégie, MLOps et IA générative : du cadrage à la mise en production.' },
-  { title: 'Agents IA', text: 'Agents sur mesure pour automatiser vos processus, avec une seule équipe de bout en bout.' },
-  { title: 'Ingénierie logicielle', text: 'Applications web et mobiles, modernisation et ingénierie produit. Les mêmes ingénieurs du début à la fin.' },
-  { title: 'Cloud & infrastructure', text: 'Migration, DevOps et gestion d’infrastructure sur AWS, Azure et Google Cloud.' },
-  { title: 'Data & Analytics', text: 'Plateformes data, entrepôts de données et BI pour décider sur des chiffres fiables.' },
-];
-
-export const industries = [
-  { name: 'Retail / E-commerce', img: ind1, value: '100K+', text: 'utilisateurs servis chaque jour via nos systèmes e-commerce.' },
-  { name: 'Finance', img: ind2, value: '2 M€', text: 'de transactions traitées chaque mois pour une fintech.' },
-  { name: 'Santé', img: ind3, value: '30+', text: 'cliniques connectées à une plateforme de gestion unique.' },
-  { name: 'Logistique', img: ind4, value: '−35 %', text: 'de retards de livraison grâce au suivi en temps réel.' },
-  { name: 'Agriculture', img: ind5, value: '10 000', text: 'hectares suivis via une plateforme d’agriculture de précision.' },
-];
-
-export const insights = [
-  { title: 'Facturation par IA : le guide pour les équipes finance', tag: 'IA', date: '22 octobre 2026', type: 'Blog d’expert' },
-  { title: 'Migration cloud : éviter les 5 erreurs les plus coûteuses', tag: 'Cloud', date: '16 octobre 2026', type: 'Livre blanc' },
-  { title: 'Agents IA pour l’automatisation en entreprise', tag: 'IA', date: '12 octobre 2026', type: 'Webinaire' },
-  { title: 'Une couche analytique gouvernée pour un BI cohérent', tag: 'Data', date: '09 octobre 2026', type: 'Livre blanc' },
-];
-
-export const topics = ['IA', 'Data', 'Cloud', 'Cybersécurité', 'Mobile', 'DevOps', 'UI/UX', 'Outsourcing'];
+export const content = { fr, en };

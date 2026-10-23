@@ -1,13 +1,15 @@
 import logo from '../assets/logo-light.png';
-import { megaMenu } from '../data.js';
+import { useLang } from '../i18n.jsx';
 
 export default function Footer() {
+  const { data, ui } = useLang();
+  const { megaMenu } = data;
   return (
     <footer className="footer">
       <div className="container footer__grid">
         <div>
           <img src={logo} alt="NDAOO" className="footer__logo" />
-          <p>Services technologiques : logiciel, cloud, data et IA.</p>
+          <p>{ui.footerTagline}</p>
         </div>
         {Object.entries(megaMenu).map(([label, cols]) => (
           <div key={label}>
@@ -18,7 +20,7 @@ export default function Footer() {
           </div>
         ))}
       </div>
-      <p className="footer__copy">© {new Date().getFullYear()} NDAOO. Tous droits réservés.</p>
+      <p className="footer__copy">© {new Date().getFullYear()} NDAOO. {ui.rights}</p>
     </footer>
   );
 }

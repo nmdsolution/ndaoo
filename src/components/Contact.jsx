@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import SphereMorph from './SphereMorph.jsx';
+import { useLang } from '../i18n.jsx';
 
 export default function Contact() {
+  const { ui } = useLang();
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
@@ -18,17 +20,17 @@ export default function Contact() {
         <SphereMorph />
         <div className="contact__content">
           <div className="reveal">
-            <h2>Parlons de votre projet</h2>
-            <p className="lead">Décrivez votre besoin, nous revenons vers vous sous 48 h.</p>
+            <h2>{ui.contactTitle}</h2>
+            <p className="lead">{ui.contactLead}</p>
           </div>
           {sent ? (
-            <p role="status" className="contact__ok">Merci {form.name} ! Nous vous répondrons très vite.</p>
+            <p role="status" className="contact__ok">{ui.thanks(form.name)}</p>
           ) : (
             <form onSubmit={onSubmit} className="form reveal" style={{ '--i': 1 }}>
-              <label>Nom<input value={form.name} onChange={set('name')} required /></label>
-              <label>E-mail<input type="email" value={form.email} onChange={set('email')} required /></label>
-              <label>Message<textarea rows="4" value={form.message} onChange={set('message')} /></label>
-              <button className="btn btn--accent" type="submit">Envoyer</button>
+              <label>{ui.name}<input value={form.name} onChange={set('name')} required /></label>
+              <label>{ui.email}<input type="email" value={form.email} onChange={set('email')} required /></label>
+              <label>{ui.message}<textarea rows="4" value={form.message} onChange={set('message')} /></label>
+              <button className="btn btn--accent" type="submit">{ui.send}</button>
             </form>
           )}
         </div>

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { testimonials } from '../data.js';
+import { useLang } from '../i18n.jsx';
 
 export default function Testimonials() {
+  const { data, ui } = useLang();
+  const { testimonials } = data;
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
   const t = testimonials[i];
@@ -27,9 +29,9 @@ export default function Testimonials() {
           <p className="testimonial__author"><strong>{t.name}</strong>, {t.company}</p>
         </div>
         <div className="slider-controls">
-          <button onClick={() => setI((i - 1 + n) % n)} aria-label="Précédent">←</button>
+          <button onClick={() => setI((i - 1 + n) % n)} aria-label={ui.previous}>←</button>
           <span>{i + 1} / {n}</span>
-          <button onClick={() => setI((i + 1) % n)} aria-label="Suivant">→</button>
+          <button onClick={() => setI((i + 1) % n)} aria-label={ui.next}>→</button>
           {!paused && <span key={`p${i}`} className="slider-progress" aria-hidden="true" />}
         </div>
       </div>

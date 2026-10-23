@@ -1,11 +1,13 @@
-import { partners } from '../data.js';
+import { useLang } from '../i18n.jsx';
 
 export default function Partners() {
+  const { data, ui } = useLang();
+  const { partners } = data;
   return (
     <section className="section">
       <div className="container">
-        <h2 className="reveal">Des technologies et plateformes que vos équipes utilisent déjà</h2>
-        <p className="lead reveal">NDAOO maîtrise les principaux écosystèmes cloud et data du marché.</p>
+        <h2 className="reveal">{ui.partnersTitle}</h2>
+        <p className="lead reveal">{ui.partnersLead}</p>
       </div>
       {/* Bandeau défilant en continu : la liste est doublée pour une boucle sans saut */}
       <div className="marquee reveal">

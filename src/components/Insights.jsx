@@ -1,10 +1,12 @@
-import { insights, topics } from '../data.js';
+import { useLang } from '../i18n.jsx';
 
 export default function Insights() {
+  const { data, ui } = useLang();
+  const { insights, topics } = data;
   return (
     <section className="section section--grey">
       <div className="container">
-        <h2 className="reveal">Insights</h2>
+        <h2 className="reveal">{ui.insightsTitle}</h2>
         <ul className="topics">
           {topics.map((t, i) => <li key={t} className="reveal" style={{ '--i': i * 0.5 }}>{t}</li>)}
         </ul>

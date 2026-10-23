@@ -1,3 +1,4 @@
+import TopBar from './components/TopBar.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import Problem from './components/Problem.jsx';
@@ -11,13 +12,15 @@ import Insights from './components/Insights.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import GravityField from './components/GravityField.jsx';
+import { LangProvider } from './i18n.jsx';
 import useReveal from './useReveal.js';
 
 export default function App() {
   useReveal();
 
   return (
-    <>
+    <LangProvider>
+      <TopBar />
       <Header />
       <main>
         <Hero />
@@ -33,6 +36,6 @@ export default function App() {
       </main>
       <Footer />
       <GravityField />
-    </>
+    </LangProvider>
   );
 }

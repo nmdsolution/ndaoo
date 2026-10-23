@@ -1,10 +1,12 @@
-import { phases } from '../data.js';
+import { useLang } from '../i18n.jsx';
 
 export default function Phases() {
+  const { data, ui } = useLang();
+  const { phases } = data;
   return (
     <section className="section section--dark">
       <div className="container">
-        <h2 className="reveal">Quatre phases. Une sortie possible à chaque étape. Aucun engagement long terme.</h2>
+        <h2 className="reveal">{ui.phasesTitle}</h2>
         <ol className="phases">
           {phases.map((p, i) => (
             <li key={p.n} className="phase reveal" style={{ '--i': i }}>
