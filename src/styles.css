@@ -61,14 +61,14 @@ button { font: inherit; cursor: pointer; }
 .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .12em; font-size: 14px; margin-bottom: 20px; }
 
 /* Hero */
-.hero {
+.hero, .contact-hero {
   position: relative; overflow: hidden; color: #fff; padding: 110px 0 110px;
   background:
     radial-gradient(ellipse 55% 70% at 22% 45%, rgba(255,105,0,.28), transparent 70%),
     radial-gradient(ellipse 40% 50% at 95% 0%, rgba(255,130,0,.18), transparent 70%),
     linear-gradient(160deg, #141414 0%, #090909 60%, #1a0d04 100%);
 }
-.hero::before {
+.hero::before, .contact-hero::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;
   background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
   background-size: 64px 64px;
@@ -232,7 +232,16 @@ button { font: inherit; cursor: pointer; }
 .industry__body strong { display: block; font-size: 44px; font-weight: 500; color: var(--accent); }
 
 /* Contact */
-.contact { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.contact { position: relative; }
+.contact__content { position: relative; z-index: 2; display: grid; gap: 40px; max-width: 560px; }
+.contact__content h2 { margin-bottom: 20px; }
+@media (min-width: 993px) {
+  /* Même disposition que le hero : animation à gauche, contenu à droite */
+  .contact { min-height: 520px; }
+  .contact .hero__animation { display: block; position: absolute; top: -80px; left: -60px; z-index: 1; cursor: grab; }
+  .contact .hero__animation:active { cursor: grabbing; }
+  .contact__content { margin-left: auto; }
+}
 .form { display: grid; gap: 18px; }
 .form label { display: grid; gap: 6px; font-size: 14px; color: #cad1dc; }
 .form input, .form textarea {
@@ -251,8 +260,11 @@ button { font: inherit; cursor: pointer; }
 .footer a:hover { color: var(--accent); }
 .footer__copy { text-align: center; margin-top: 48px; font-size: 13px; color: #8b8e94; }
 
-/* Champ gravitationnel global (voir GravityField.jsx) : au-dessus du contenu, sous l'en-tête, sans bloquer les clics */
-.gravity { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 40; pointer-events: none; }
+/* Champ gravitationnel global (voir GravityField.jsx) : DERRIÈRE le contenu, qui ne peut donc jamais être masqué.
+   Les sections claires sont transparentes pour laisser voir la grille ; sections sombres, cartes et hero restent opaques. */
+.gravity { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+main, .footer { position: relative; z-index: 1; }
+.section--grey { background: rgba(246,246,246,.55); }
 
 /* Responsive */
 @media (max-width: 991px) {
@@ -260,7 +272,6 @@ button { font: inherit; cursor: pointer; }
   .cols-3, .cols-4, .phases { grid-template-columns: repeat(2, 1fr); }
   .phases { row-gap: 48px; }
   .phase:nth-child(2n)::before { display: none; }
-  .contact { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: repeat(2, 1fr); }
   .header__burger { display: flex; }
   .header__nav {

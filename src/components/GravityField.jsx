@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-// Champ gravitationnel global posé au-dessus de la page (pointer-events: none).
+// Champ gravitationnel global posé derrière la page (z-index 0, pointer-events: none).
 // - Grille « espace-temps » courbée par des masses : le curseur (trou noir visible)
 //   et deux masses invisibles qui dérivent lentement.
 // - Clic maintenu : le trou noir grossit ; relâché : onde gravitationnelle.
@@ -34,11 +34,11 @@ void main() {
     if (h.z <= 0.001) continue;
     vec2 d = q - h.xy;
     float r = length(d);
-    float R = 150.0 * h.z;
+    float R = 90.0 + 55.0 * h.z;
     // Tourbillon + pincement : la grille s'enroule et converge vers la masse
-    d = rot(1.4 * h.z * exp(-r / R)) * d;
-    q = h.xy + d * (1.0 + 1.3 * h.z * exp(-r / R));
-    field += h.z * exp(-r / (R * 1.4));
+    d = rot(min(1.3 * h.z, 3.0) * exp(-r / R)) * d;
+    q = h.xy + d * (1.0 + min(1.1 * h.z, 2.4) * exp(-r / R));
+    field += h.z * 0.6 * exp(-r / R);
 
     if (uCore[i] > 0.5) {
       float rs = length(px - h.xy);
@@ -69,11 +69,14 @@ void main() {
   vec2 gd = abs(fract(g - 0.5) - 0.5);
   vec2 fw = fwidth(g);
   vec2 l = 1.0 - smoothstep(vec2(0.0), fw * 1.3, gd);
-  float line = max(l.x, l.y);
-  float node = l.x * l.y;
+  // Là où la grille est trop comprimée, on l'efface au lieu de produire du moiré
+  float dense = 1.0 - smoothstep(0.2, 0.55, max(fw.x, fw.y));
+  float line = max(l.x, l.y) * dense;
+  float node = l.x * l.y * dense;
   float f = clamp(field, 0.0, 1.0);
 
-  float aGrid = line * (0.035 + 0.4 * f) + node * 0.35 * f;
+  // Un peu plus marqué qu'avant : le calque est derrière le contenu et passe sous des fonds semi-opaques
+  float aGrid = line * (0.05 + 0.35 * f) + node * 0.4 * f;
   vec3 orange = vec3(1.0, 0.41, 0.0);
   vec3 pc = orange * aGrid;
   float a = aGrid;
